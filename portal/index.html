@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedDemo — Interactive medical research demonstrators</title>
+  <meta name="description" content="MedDemo hosts interactive research prototypes for exploring clinical methods. Not for diagnosis or treatment.">
+  <link rel="stylesheet" href="/css/portal.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p class="brand-eyebrow">Research demonstrator hub</p>
+          <h1 class="brand-title">MedDemo</h1>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#demos">Demonstrators</a></li>
+          <li><a href="#notice">Research notice</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-eyebrow">Interactive methods · illustrative outputs only</p>
+        <h2 class="hero-title">Explore medical research concepts before they become clinical tools</h2>
+        <p class="hero-lead">
+          MedDemo is a curated home for web-based research demonstrators—interfaces,
+          workflows, and transparent equations that make methodological ideas tangible
+          for peer review, teaching, and supervised usability evaluation.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#demos">Browse demonstrators</a>
+          <a class="btn btn-ghost" href="#notice">Read research notice</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="What MedDemo is">
+        <h3 class="panel-title">What you will find here</h3>
+        <ul class="panel-list">
+          <li>Research prototypes, not validated clinical devices</li>
+          <li>Explicit safety screens and plain-language disclaimers</li>
+          <li>Versioned, inspectable demonstration models</li>
+          <li>Space for additional demos as projects mature</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="about" class="section">
+      <div class="wrap narrow">
+        <h2 class="section-title">About MedDemo</h2>
+        <p>
+          Medical innovation often depends on making complex methods understandable:
+          how variables are collected, how they enter a model, and how outputs should
+          <em>not</em> be interpreted. MedDemo provides a lightweight public showcase
+          for such work—starting with gastrointestinal symptom modelling and expanding
+          as new demonstrators are ready.
+        </p>
+        <p>
+          Each subdirectory hosts an independent application with its own specification,
+          safety language, and release notes. Demonstrators may use fictional or
+          non-identifiable data and illustrative coefficients unless explicitly stated
+          otherwise in an approved research protocol.
+        </p>
+      </div>
+    </section>
+
+    <section id="demos" class="section section-alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Demonstrators</h2>
+          <p class="section-subtitle">Available now and planned releases</p>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card demo-card-live">
+            <div class="demo-card-top">
+              <span class="demo-badge demo-badge-live">Live</span>
+              <p class="demo-domain">Gastro-oesophageal reflux · symptom modelling</p>
+            </div>
+            <h3 class="demo-title">BRPI Research Demonstrator</h3>
+            <p class="demo-text">
+              Bivariate Reflux Probability Instrument—retains symptom frequency and intensity
+              as separate dimensions inside an illustrative logistic workflow, with safety
+              override, contributor explanation, and patient-specific curves.
+            </p>
+            <dl class="demo-meta">
+              <div><dt>Path</dt><dd><code>/brpi/</code></dd></div>
+              <div><dt>Status</dt><dd>Illustrative · not clinically validated</dd></div>
+            </dl>
+            <a class="btn btn-primary btn-block" href="/brpi/">Open BRPI demonstrator</a>
+          </article>
+
+          <article class="demo-card demo-card-soon">
+            <div class="demo-card-top">
+              <span class="demo-badge demo-badge-soon">Planned</span>
+              <p class="demo-domain">Additional medical methods</p>
+            </div>
+            <h3 class="demo-title">Future demonstrators</h3>
+            <p class="demo-text">
+              MedDemo is designed as a hub. New interactive prototypes—questionnaires,
+              decision-support sketches, and teaching tools—will appear here as separate
+              subdirectories when ready for public research demonstration.
+            </p>
+            <dl class="demo-meta">
+              <div><dt>Examples</dt><dd>Usability pilots · methods teaching · reproducibility artifacts</dd></div>
+              <div><dt>Availability</dt><dd>Announced on this page</dd></div>
+            </dl>
+            <span class="btn btn-disabled btn-block" aria-disabled="true">Coming later</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="notice" class="section">
+      <div class="wrap narrow">
+        <h2 class="section-title">Research notice</h2>
+        <div class="notice-box" role="note">
+          <p>
+            <strong>Not for clinical diagnosis or treatment.</strong>
+            MedDemo applications are research and communication artifacts. They must not
+            delay urgent assessment, endoscopy, cardiac evaluation, or any clinically
+            indicated care. Do not rely on illustrative probabilities, zones, or outputs
+            for healthcare decisions unless a tool has undergone formal validation and
+            regulatory assessment for that purpose.
+          </p>
+        </div>
+        <p class="small-muted">
+          Questions about a specific demonstrator should be directed to the project team
+          cited in its manuscript or specification. MedDemo does not collect personally
+          identifying information in standard demonstration mode unless a separate
+          ethics-approved study is explicitly enabled.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>MedDemo · research demonstrator hub · illustrative methods only</p>
+      <p class="footer-links">
+        <a href="/brpi/">BRPI</a>
+        <span aria-hidden="true">·</span>
+        <a href="#about">About</a>
+        <span aria-hidden="true">·</span>
+        <a href="#notice">Research notice</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

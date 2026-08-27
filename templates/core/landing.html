@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}BRPI Research Demonstrator{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9">
+    <p class="eyebrow text-uppercase tracking-wide mb-2">Bivariate Reflux Probability Instrument</p>
+    <h1 class="display-6 mb-3">Retain frequency and intensity as separate dimensions</h1>
+    <p class="lead">
+      This research demonstrator shows how GERD-related symptom <em>frequency</em> and
+      <em>intensity</em> can be kept as distinct inputs rather than collapsed into additive
+      questionnaire points. Probabilities and zones are illustrative only.
+    </p>
+
+    <div class="concept-grid my-4">
+      <div class="concept-card">
+        <div class="concept-card-head">
+          <span class="axis-glyph" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="40" height="40" focusable="false">
+              <line x1="8" y1="32" x2="34" y2="32" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="8" y1="32" x2="8" y2="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <polyline points="8,10 8,6 12,6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="30,32 34,32 34,28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="26" cy="14" r="2.4" fill="currentColor"/>
+              <text x="28" y="38" font-size="9" font-family="Georgia, serif" fill="currentColor">x</text>
+            </svg>
+          </span>
+          <h2 class="h5 mb-0">Frequency</h2>
+        </div>
+        <p class="mb-0">How many days (or nights) a symptom occurred in the past seven days.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card-head">
+          <span class="axis-glyph" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="40" height="40" focusable="false">
+              <line x1="8" y1="32" x2="34" y2="32" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="8" y1="32" x2="8" y2="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <polyline points="8,10 8,6 12,6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="30,32 34,32 34,28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="18" cy="12" r="2.4" fill="currentColor"/>
+              <text x="2" y="14" font-size="9" font-family="Georgia, serif" fill="currentColor">y</text>
+            </svg>
+          </span>
+          <h2 class="h5 mb-0">Intensity</h2>
+        </div>
+        <p class="mb-0">How severe the symptom felt on a 0–10 scale with plain-language anchors.</p>
+      </div>
+    </div>
+
+    <h2 class="h4 mt-2">Choose an entry mode</h2>
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <form method="post" action="{% url 'assessment:start' %}" class="mode-panel h-100">
+          {% csrf_token %}
+          <input type="hidden" name="mode" value="paper_example">
+          <h3 class="h5">Paper example</h3>
+          <p>
+            Load the fictional manuscript case with pre-filled parameters to instantly
+            reproduce the published demonstration calculation.
+          </p>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mode-cta">Run paper example</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form method="post" action="{% url 'assessment:start' %}" class="mode-panel h-100">
+          {% csrf_token %}
+          <input type="hidden" name="mode" value="interactive">
+          <h3 class="h5">Interactive exploration</h3>
+          <p>
+            Open a blank session to enter your own fictional or demonstration responses.
+            No personally identifying information is required.
+          </p>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mode-cta">Start interactive session</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

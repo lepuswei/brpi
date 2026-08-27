@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Review responses{% endblock %}
+{% block content %}
+{% include "partials/reset_bar.html" %}
+<div class="col-lg-9">
+  <h1 class="h2">Review responses</h1>
+  <p>Check the values below before generating the illustrative report. You may correct them if needed.</p>
+  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
+
+  <dl class="row review-grid">
+    {% for row in symptom_rows %}
+    <dt class="col-sm-5">{{ row.label }}</dt>
+    <dd class="col-sm-7">{% if row.value == "" or row.value is None %}—{% else %}{{ row.value }}{% endif %}</dd>
+    {% endfor %}
+  </dl>
+
+  <h2 class="h5 mt-3">Mapped model inputs (illustrative equation)</h2>
+  <dl class="row review-grid">
+    {% for key, value in assessment.model_inputs.items %}
+    <dt class="col-sm-5">{{ key }}</dt>
+    <dd class="col-sm-7">{{ value }}</dd>
+    {% endfor %}
+  </dl>
+
+  <form method="post" class="d-flex gap-2 mt-4">
+    {% csrf_token %}
+    <button type="submit" name="action" value="edit" class="btn btn-outline-secondary">Edit responses</button>
+    <button type="submit" name="action" value="calculate" class="btn btn-primary">Generate illustrative report</button>
+  </form>
+</div>
+{% endblock %}

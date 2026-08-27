@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Illustrative report · {{ assessment.session_code }}{% endblock %}
+{% block body_class %}report-page{% if print_mode %} print-mode{% endif %}{% endblock %}
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+{% endblock %}
+{% block content %}
+{% include "partials/reset_bar.html" %}
+<div class="report">
+  <header class="print-doc-header">
+    <p class="print-doc-eyebrow">BRPI Research Demonstrator · illustrative report</p>
+    <h1 class="print-doc-title">Demonstration report</h1>
+    <p class="print-doc-meta">
+      Session {{ assessment.session_code }} · {{ assessment.mode }} · {{ result.generated_at }}
+    </p>
+  </header>
+
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3 no-print">
+    <div>
+      <h1 class="h2 mb-1">Demonstration report</h1>
+      <p class="text-secondary mb-0">
+        Session {{ assessment.session_code }} ·
+        {{ assessment.mode }} ·
+        generated {{ result.generated_at }}
+      </p>
+    </div>
+    <div class="d-flex flex-column gap-2 align-items-stretch">
+      <button type="button" class="btn btn-outline-secondary" onclick="triggerReportPrint()">Print / save PDF</button>
+      <p class="small text-secondary mb-0 print-hint">
+        For a cleaner PDF, disable <em>Headers and footers</em> in your browser’s print dialog.
+      </p>
+      <form method="post" action="{% url 'assessment:reset' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary w-100">Reset questionnaire</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
+
+  <section class="mb-4">
+    <h2 class="h4">Versions</h2>
+    <ul class="mb-0">
+      <li>Questionnaire: {{ assessment.questionnaire_name }} v{{ assessment.questionnaire_version }}</li>
+      <li>Model: {{ result.model_name }} v{{ result.model_version }}</li>
+      <li>Validation status: illustrative_only · clinical use permitted: false</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h4">Safety-screen status</h2>
+    {% if result.safety_override %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Safety override active.</strong>
+      One or more alarm features were reported. No illustrative GERD probability is estimated or displayed.
+      Please seek prompt professional assessment. This message is not a GERD prediction.
+    </div>
+    {% else %}
+    <p class="mb-2"><span class="badge text-bg-secondary">No safety override</span></p>
+    {% endif %}
+    <ul class="list-unstyled small">
+      {% for row in safety_rows %}
+      <li>{{ row.label }}: <strong>{{ row.value }}</strong></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% if not result.safety_override %}
+  <section class="mb-4 report-section report-section-plots">
+    <h2 class="h4">Illustrative probability</h2>
+    <p class="display-6 mb-1">{{ result.probability_display }}</p>
+    <p class="mb-1">
+      Demonstration action zone:
+      <strong>{{ result.zone }}</strong>
+    </p>
+    <p class="small text-secondary">
+      η (eta) = {{ result.eta }} · zones are illustrative cutoffs (below 0.20 / 0.20–&lt;0.80 / ≥0.80), not clinical thresholds.
+    </p>
+
+    {% if result.uncertainty_method == "prewritten_manuscript_illustration" %}
+    <p class="small">
+      Prewritten manuscript illustration interval: {{ result.uncertainty_lower }}–{{ result.uncertainty_upper }}.
+      This is <em>not</em> a calculated posterior or confidence interval.
+    </p>
+    {% else %}
+    <p class="small">
+      A statistically valid uncertainty interval is unavailable because this demonstration model
+      has not been fitted to patient data.
+    </p>
+    {% endif %}
+
+    <div id="probability-gauge" class="plot-box" aria-label="Illustrative probability gauge"></div>
+    <p class="plot-caption">Illustrative—not clinically validated</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h4">Mathematical contributors</h2>
+    <p>{{ result.explanation }}</p>
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <thead>
+          <tr><th>Term</th><th>Contribution to η</th></tr>
+        </thead>
+        <tbody>
+          {% for c in result.ranked_contributors %}
+          <tr>
+            <td>{{ c.label }}</td>
+            <td>{{ c.value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mb-4 report-section report-section-plots">
+    <h2 class="h4">Patient-specific heartburn frequency curve</h2>
+    <p class="small">
+      Heartburn days varied from 0–7 while holding other entered responses fixed.
+      Marker shows the entered heartburn frequency ({{ assessment.model_inputs.HF }} days).
+    </p>
+    <div id="heartburn-curve" class="plot-box" aria-label="Heartburn frequency curve"></div>
+    <p class="plot-caption">Illustrative—not clinically validated</p>
+  </section>
+
+  <section class="mb-4 report-section report-section-plots">
+    <h2 class="h4">Regurgitation frequency curve (optional)</h2>
+    <div id="regurgitation-curve" class="plot-box" aria-label="Regurgitation frequency curve"></div>
+    <p class="plot-caption">Illustrative—not clinically validated</p>
+  </section>
+
+  <section class="mb-4 report-section report-section-plots">
+    <h2 class="h4">Bivariate frequency–intensity surface (optional)</h2>
+    <div id="bivariate-surface" class="plot-box plot-box-tall" aria-label="Bivariate surface"></div>
+    <p class="plot-caption">Illustrative—not clinically validated</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h4">Response certainty</h2>
+    <p>{{ assessment.symptoms.response_certainty }}%</p>
+  </section>
+  {% endif %}
+</div>
+
+{{ result|json_script:"report-data" }}
+{{ assessment.model_inputs|json_script:"model-inputs" }}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  function triggerReportPrint() {
+    if (typeof window.prepareReportPrint === "function") {
+      window.prepareReportPrint();
+    } else {
+      window.print();
+    }
+  }
+</script>
+{% if not result.safety_override %}
+<script src="{% static 'js/report_plots.js' %}"></script>
+{% endif %}
+{% if print_mode %}
+<script>window.addEventListener("load", () => { triggerReportPrint(); });</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}About · BRPI Research Demonstrator{% endblock %}
+{% block content %}
+<div class="col-lg-8">
+  <h1 class="h2">About this demonstrator</h1>
+  <p>
+    The Bivariate Reflux Probability Instrument (BRPI) concept treats symptom frequency and
+    intensity as separate predictors, including interaction terms, inside a transparent
+    illustrative logistic equation.
+  </p>
+  <p>
+    This web application implements Phases 1–2 of the research demonstrator: paper-example
+    reproduction, interactive fictional entry, safety override, contributor explanation,
+    and illustrative plots. It is <strong>not</strong> a validated clinical prediction model.
+  </p>
+  <ul>
+    <li>Model: IllustrativeLogisticModel v1.0.0</li>
+    <li>Validation status: illustrative_only</li>
+    <li>Clinical use permitted: false</li>
+  </ul>
+  <p><a href="{% url 'core:landing' %}">Return to home</a></p>
+</div>
+{% endblock %}
