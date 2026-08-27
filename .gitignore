@@ -11,3 +11,9 @@ staticfiles/
 htmlcov/
 .DS_Store
 Thumbs.db
+
+# Keep manuscripts and private docs out of the software repository
+doc/
+*.pdf
+*.doc
+*.docx
