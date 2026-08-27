@@ -55,7 +55,6 @@ The illustrative-reference-case acceptance test requires:
 ## Project layout
 
 ```text
-├── doc/                      # manuscripts & build proposal
 ├── config/                   # Django settings / URLs
 ├── core/                     # landing, about
 ├── questionnaire/            # forms & constants
@@ -63,11 +62,14 @@ The illustrative-reference-case acceptance test requires:
 ├── model_registry/           # versioned metadata + calculation engine
 │   └── engine/               # Django-independent predict() API
 ├── reports/                  # demonstration report
+├── portal/                   # static MedDemo homepage (deploy separately)
 ├── templates/ · static/
 ├── tests/
 ├── manage.py
 └── requirements.txt
 ```
+
+Manuscripts and private research documents are kept offline and are not part of this software repository.
 
 ## Safety
 
