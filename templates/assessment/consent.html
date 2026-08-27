@@ -4,7 +4,7 @@
 {% include "partials/reset_bar.html" %}
 <div class="col-lg-8">
   <h1 class="h2">Intended use and acknowledgement</h1>
-  <p class="text-secondary">Session {{ assessment.session_code }} · mode: {{ assessment.mode }}</p>
+  <p class="text-secondary">Session {{ assessment.session_code }} · mode: {{ assessment.mode_label|default:assessment.mode }}</p>
 
   <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
 

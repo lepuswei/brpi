@@ -15,8 +15,8 @@ To make the proposed bivariate workflow tangible for method discussion and usabi
 ## Figure legends
 
 **Figure X. BRPI research demonstrator.**  
-**(A)** Landing page of the research prototype, offering paper-example and interactive exploration modes and displaying the required research-only disclaimer.  
-**(B)** Illustrative paper-example output: probability with demonstration zones (panel A of the report graphic) and the patient-specific heartburn-frequency curve with the entered frequency marked (panel B). Zones at 0.20 and 0.80 and the prewritten 0.74–0.94 interval are illustrative only and are not clinically validated cutoffs or calculated confidence intervals.
+**(A)** Landing page of the research prototype, offering an illustrative reference case and interactive exploration modes and displaying the required research-only disclaimer.  
+**(B)** Illustrative reference-case output: probability with demonstration zones (panel A of the report graphic) and the patient-specific heartburn-frequency curve with the entered frequency marked (panel B). Zones at 0.20 and 0.80 and the prewritten 0.74–0.94 interval are illustrative only and are not clinically validated cutoffs or calculated confidence intervals.
 
 Alternative single-panel legend if only the report graphic is used:
 

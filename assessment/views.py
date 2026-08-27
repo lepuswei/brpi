@@ -39,7 +39,7 @@ class ResetAssessmentView(View):
         clear_assessment(request.session)
         messages.info(
             request,
-            "Questionnaire reset. You can start again with the paper example or an interactive session.",
+            "Questionnaire reset. You can start again with the illustrative reference case or an interactive session.",
         )
         return redirect("core:landing")
 
