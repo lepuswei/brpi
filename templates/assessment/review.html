@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Review responses{% endblock %}
 {% block content %}
-{% include "partials/reset_bar.html" %}
 <div class="col-lg-9">
   <h1 class="h2">Review responses</h1>
   <p>Check the values below before generating the illustrative report. You may correct them if needed.</p>
-  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
 
   <dl class="row review-grid">
     {% for row in symptom_rows %}

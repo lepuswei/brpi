@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Safety screen{% endblock %}
 {% block content %}
-{% include "partials/reset_bar.html" %}
 <div class="col-lg-8">
   <h1 class="h2">Safety screen</h1>
   <p>
     Answer the following alarm-feature questions. If any answer is <strong>Yes</strong>,
     the demonstrator will <strong>not</strong> calculate or display an illustrative GERD probability.
   </p>
-  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
 
   <form method="post" novalidate>
     {% csrf_token %}

@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Intended use &amp; acknowledgement{% endblock %}
 {% block content %}
-{% include "partials/reset_bar.html" %}
 <div class="col-lg-8">
   <h1 class="h2">Intended use and acknowledgement</h1>
   <p class="text-secondary">Session {{ assessment.session_code }} · mode: {{ assessment.mode_label|default:assessment.mode }}</p>
 
-  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
-
   <p>
-    Acknowledging this disclaimer is <strong>not</strong> research consent. Approved study
-    consent language would appear only in an ethics-approved research mode (not enabled here).
+    Please confirm the items below. Checking these boxes acknowledges the research notice
+    in the banner above; it is <strong>not</strong> ethics-approved research consent.
   </p>
 
   <form method="post" novalidate>

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Seven-day symptom questionnaire{% endblock %}
 {% block content %}
-{% include "partials/reset_bar.html" %}
 <div class="col-lg-9">
   <h1 class="h2">Seven-day symptom questionnaire</h1>
   <p class="text-secondary">
@@ -12,7 +11,6 @@
     Use fictional or demonstration responses only.
     {% endif %}
   </p>
-  <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
 
   <details class="mb-3">
     <summary>Plain-language definitions</summary>

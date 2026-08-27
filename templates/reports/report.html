@@ -6,7 +6,6 @@
 <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
 {% endblock %}
 {% block content %}
-{% include "partials/reset_bar.html" %}
 <div class="report">
   <header class="print-doc-header">
     <p class="print-doc-eyebrow">BRPI Research Demonstrator · illustrative report</p>
@@ -30,13 +29,10 @@
       <p class="small text-secondary mb-0 print-hint">
         For a cleaner PDF, disable <em>Headers and footers</em> in your browser’s print dialog.
       </p>
-      <form method="post" action="{% url 'assessment:reset' %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-primary w-100">Reset questionnaire</button>
-      </form>
     </div>
   </div>
 
+  {# Kept on the report because the top banner is hidden when printing #}
   <div class="alert alert-warning" role="alert">{{ disclaimer }}</div>
 
   <section class="mb-4">
