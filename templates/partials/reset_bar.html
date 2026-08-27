@@ -1,0 +1,12 @@
+{% comment %}Clear session and return to the clean landing page.{% endcomment %}
+<div class="reset-bar no-print" role="navigation" aria-label="Session reset">
+  <form method="post" action="{% url 'assessment:reset' %}" class="reset-form">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-secondary btn-sm">
+      Reset questionnaire
+    </button>
+    <span class="reset-hint text-secondary">
+      Clears this session and returns to the landing page.
+    </span>
+  </form>
+</div>

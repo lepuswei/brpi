@@ -1,0 +1,380 @@
+:root {
+  --ink: #1c2a24;
+  --muted: #5a6b63;
+  --accent: #0f6a5a;
+  --accent-soft: #d7efe8;
+  --accent-deep: #0c574a;
+  --paper: #f7faf8;
+  --panel: rgba(255, 255, 255, 0.82);
+  --line: #d5e0db;
+  --warn-bg: #fff4df;
+  --warn-ink: #7a4b00;
+  --soon-bg: #eef1f4;
+  --soon-ink: #4a5560;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 520px at 8% -8%, #e7f4ef 0%, transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, #eef2ea 0%, transparent 50%),
+    var(--paper);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent-deep);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.wrap {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.narrow {
+  width: min(760px, calc(100% - 2rem));
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  z-index: 10;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-mark {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(135deg, var(--accent) 0%, #17856f 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.brand-eyebrow,
+.hero-eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-list a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero {
+  padding: 2.5rem 0 2rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 2.45rem);
+  line-height: 1.15;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-panel,
+.demo-card,
+.notice-box {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--panel);
+}
+
+.hero-panel {
+  padding: 1.15rem 1.2rem;
+}
+
+.panel-title {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.panel-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+.section-alt {
+  background: rgba(255, 255, 255, 0.45);
+  border-block: 1px solid var(--line);
+}
+
+.section-head {
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  margin: 0 0 0.35rem;
+}
+
+.section-subtitle,
+.small-muted {
+  color: var(--muted);
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.demo-card {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.demo-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.demo-badge {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.demo-badge-live {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+.demo-badge-soon {
+  background: var(--soon-bg);
+  color: var(--soon-ink);
+}
+
+.demo-domain {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+.demo-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.2rem;
+}
+
+.demo-text {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  flex: 1 1 auto;
+}
+
+.demo-meta {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+}
+
+.demo-meta div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.5rem;
+}
+
+.demo-meta dt {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.demo-meta dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 1rem;
+  border-radius: 0.55rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-deep);
+  color: #fff;
+}
+
+.btn-ghost {
+  border-color: var(--line);
+  background: #fff;
+  color: var(--accent-deep);
+}
+
+.btn-disabled {
+  background: var(--soon-bg);
+  color: var(--soon-ink);
+  text-align: center;
+}
+
+.notice-box {
+  padding: 1rem 1.1rem;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  margin-bottom: 0.85rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.2rem 0 1.6rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+@media (max-width: 860px) {
+  .hero-grid,
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .demo-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .demo-domain {
+    text-align: left;
+  }
+}
+
+@media print {
+  .hero-actions,
+  .nav-list,
+  .site-footer {
+    display: none;
+  }
+}
