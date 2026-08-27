@@ -12,9 +12,19 @@ from questionnaire.constants import PAPER_EXAMPLE_SYMPTOMS, SAFETY_ITEMS
 
 SESSION_KEY = "brpi_assessment"
 
+MODE_LABELS = {
+    "paper_example": "illustrative reference case",
+    "interactive": "interactive exploration",
+    "research": "research",
+}
+
 
 def new_session_code() -> str:
     return uuid.uuid4().hex[:12].upper()
+
+
+def mode_label(mode: str) -> str:
+    return MODE_LABELS.get(mode, mode)
 
 
 def get_assessment(session) -> dict[str, Any] | None:
@@ -30,7 +40,8 @@ def clear_assessment(session) -> None:
 def start_assessment(session, *, mode: str) -> dict[str, Any]:
     data = {
         "session_code": new_session_code(),
-        "mode": mode,  # paper_example | interactive
+        "mode": mode,  # paper_example | interactive (internal keys)
+        "mode_label": mode_label(mode),
         "started_at": timezone.now().isoformat(),
         "completed_at": None,
         "disclaimer_acknowledged": False,

@@ -37,7 +37,7 @@ Open http://127.0.0.1:8000/
 python manage.py test tests
 ```
 
-The paper-example acceptance test requires:
+The illustrative-reference-case acceptance test requires:
 
 | Inputs | Expected |
 |---|---|
@@ -45,7 +45,7 @@ The paper-example acceptance test requires:
 
 ## Workflow
 
-1. Landing — paper example or interactive exploration  
+1. Landing — illustrative reference case or interactive exploration  
 2. Intended-use acknowledgement  
 3. Safety / alarm-feature screen (any Yes → no probability)  
 4. Seven-day symptom questionnaire  
@@ -76,8 +76,8 @@ Every major page shows:
 > Research prototype—not for clinical diagnosis or treatment…
 
 Demonstration zones (0.20 / 0.80) are illustrative only. Interactive mode never fabricates a
-statistical uncertainty interval; the paper-example mode may show the manuscript’s prewritten
-0.74–0.94 illustration, clearly labelled as such.
+statistical uncertainty interval; the illustrative-reference-case mode may show the manuscript’s
+prewritten 0.74–0.94 illustration, clearly labelled as such.
 
 ## Production notes
 

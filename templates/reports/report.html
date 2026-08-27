@@ -12,7 +12,7 @@
     <p class="print-doc-eyebrow">BRPI Research Demonstrator · illustrative report</p>
     <h1 class="print-doc-title">Demonstration report</h1>
     <p class="print-doc-meta">
-      Session {{ assessment.session_code }} · {{ assessment.mode }} · {{ result.generated_at }}
+      Session {{ assessment.session_code }} · {{ assessment.mode_label|default:assessment.mode }} · {{ result.generated_at }}
     </p>
   </header>
 
@@ -21,7 +21,7 @@
       <h1 class="h2 mb-1">Demonstration report</h1>
       <p class="text-secondary mb-0">
         Session {{ assessment.session_code }} ·
-        {{ assessment.mode }} ·
+        {{ assessment.mode_label|default:assessment.mode }} ·
         generated {{ result.generated_at }}
       </p>
     </div>
