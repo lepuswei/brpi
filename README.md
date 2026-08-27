@@ -8,8 +8,6 @@ symptom **frequency** and **intensity** are retained as separate dimensions insi
 illustrative logistic equation. This software does **not** diagnose GERD, recommend treatment,
 or claim clinical validation.
 
-Specification: [`doc/BRPI_research_demonstrator_build_proposal.md`](doc/BRPI_research_demonstrator_build_proposal.md)
-
 ## Stack
 
 - Python 3.12+ (tested with 3.14) / Django 5.2 LTS
